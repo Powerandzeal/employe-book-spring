@@ -55,11 +55,15 @@ Content-Type:application/json
 
 ### Получить сумму зарплат по сотрудников
 GET http://localhost:8080/employee/salary/sum
+
 ### Получить минимальную зарплату у сотрудника
 GET http://localhost:8080/employee/salary/min
+
 ### Получить максимальную зарплату у сотрудника
 GET http://localhost:8080/employee/salary/max
+
 ### Получить среднюю зарплату в компании
 GET https://localhost:8080/employee/findAverageSalary
+
 ### Получение всех сотрудников, зарплата которых больше средней зарплаты
 GET http://localhost:8080/employee/employeeHigherThemAverageSalary

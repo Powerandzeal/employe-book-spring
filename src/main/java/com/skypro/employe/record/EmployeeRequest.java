@@ -28,7 +28,7 @@ public class EmployeeRequest {
     }
 
     public void setDepartment(int department) {
-        this.department = department;
+        this.department =  department;
     }
 
     public int getSalary() {

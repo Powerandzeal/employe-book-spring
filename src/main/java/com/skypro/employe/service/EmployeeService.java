@@ -14,6 +14,7 @@ public class EmployeeService {
 
     private final Map<Integer, Employee> employees = new HashMap<>();
     private static int average;
+
     public Collection<Employee> getAllEmployees() {
         return this.employees.values();
     }
@@ -54,13 +55,12 @@ public class EmployeeService {
 
 
     public Map<Integer, Employee> employeeHigherThemAverageSalary() {
-        return  employees
+        return employees
                 .values()
                 .stream()
                 .filter(s -> s.getSalary() > findAverageSalary())
                 .collect(Collectors.toMap(Employee::getId, Function.identity()));
     }
-
 
 
 }
