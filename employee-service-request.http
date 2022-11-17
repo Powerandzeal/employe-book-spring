@@ -63,7 +63,7 @@ GET http://localhost:8080/employee/salary/min
 GET http://localhost:8080/employee/salary/max
 
 ### Получить среднюю зарплату в компании
-GET https://localhost:8080/employee/findAverageSalary
+###GET https://localhost:8080/employee/findAverageSalary
 
 ### Получение всех сотрудников, зарплата которых больше средней зарплаты
 GET http://localhost:8080/employee/employeeHigherThemAverageSalary

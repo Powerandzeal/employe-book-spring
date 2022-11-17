@@ -21,7 +21,7 @@ public class Employee {
         this.firstName = firstName;
         this.secondName = secondName;
         this.department = department;
-        this.salary = salary;
+        this.salary = salary ;
         this.id = counter++;
     }
 
