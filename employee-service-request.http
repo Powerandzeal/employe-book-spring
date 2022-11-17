@@ -1,0 +1,65 @@
+### получить всех сотрудников
+GET http://localhost:8080/employee
+
+### создать сотрудника1
+POST http://localhost:8080/employee
+Content-Type:application/json
+
+{
+  "firstName": "Ivan",
+  "secondName": "Ivanov",
+  "department": 1,
+  "salary": 25000
+}
+
+### создать сотрудника2
+POST http://localhost:8080/employee
+Content-Type:application/json
+
+{
+  "firstName": "Nikita",
+  "secondName": "Sergeevich",
+  "department": 2,
+  "salary": 10000
+}
+### создать сотрудника3
+POST http://localhost:8080/employee
+Content-Type:application/json
+
+{
+  "firstName": "Vasiliy",
+  "secondName": "Pupkin",
+  "department": 2,
+  "salary": 15000
+}
+### создать сотрудника4
+POST http://localhost:8080/employee
+Content-Type:application/json
+
+{
+  "firstName": "Nikita",
+  "secondName": "Gulaev",
+  "department": 2,
+  "salary": 19000
+}
+### создать сотрудника5
+POST http://localhost:8080/employee
+Content-Type:application/json
+
+{
+  "firstName": "Oleg",
+  "secondName": "Petrov",
+  "department": 2,
+  "salary": 12000
+}
+
+### Получить сумму зарплат по сотрудников
+GET http://localhost:8080/employee/salary/sum
+### Получить минимальную зарплату у сотрудника
+GET http://localhost:8080/employee/salary/min
+### Получить максимальную зарплату у сотрудника
+GET http://localhost:8080/employee/salary/max
+### Получить среднюю зарплату в компании
+GET https://localhost:8080/employee/findAverageSalary
+### Получение всех сотрудников, зарплата которых больше средней зарплаты
+GET http://localhost:8080/employee/employeeHigherThemAverageSalary
