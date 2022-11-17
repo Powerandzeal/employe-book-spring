@@ -12,7 +12,7 @@ import java.util.stream.Collectors ;
 
 public class EmployeeService {
 
-    private final Map<Integer, Employee> employees = new HashMap<>();
+    private final Map<Integer,Employee> employees = new HashMap<>();
     private static int average;
 
     public Collection<Employee> getAllEmployees() {

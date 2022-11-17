@@ -29,7 +29,7 @@ public class EmployeeController {
         return this.employeeService.addEmployee(employeeRequest);
     }
 
-    @GetMapping("/employee/salary/sum")
+    @GetMapping("/employee/salary/sum" )
     public int getSalarySum() {
         return this.employeeService.getSalarySum();
     }

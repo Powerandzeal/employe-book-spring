@@ -34,7 +34,7 @@ public class Employee {
     }
 
     public String getSecondName() {
-        return secondName;
+        return secondName ;
     }
 
     public int getDepartment() {

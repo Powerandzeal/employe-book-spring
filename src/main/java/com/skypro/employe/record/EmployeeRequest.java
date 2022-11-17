@@ -27,7 +27,7 @@ public class EmployeeRequest {
         return department;
     }
 
-    public void setDepartment(int department) {
+    public void setDepartment(int  department) {
         this.department =  department ;
     }
 
