@@ -38,29 +38,53 @@ public class EmployeeService {
                 .sum();
     }
 
-    public OptionalInt getMinSalary() {
-        return employees.values().stream().mapToInt(Employee::getSalary).min();
+
+    public Employee getPersonWithMinSalary() {
+        return employees.values().stream().min(Comparator.comparing(Employee::getSalary)).orElse(null);
     }
 
-    public OptionalInt getMaxSalary() {
-        return employees.values().stream().mapToInt(Employee::getSalary).max();
+
+
+    public Employee getPersonWithMaxSalary() {
+        return employees.values().stream().max(Comparator.comparing(Employee::getSalary)).orElse(null);
     }
 
-    public double findAverageSalary() {
-        return (double) getSalarySum() / employees.size();
+
+    public OptionalDouble findAverageSalary() {
+        return employees.values().stream().mapToDouble(Employee::getSalary).average();
     }
-//    public OptionalDouble findAverageSalary() {
-//        return employees.values().stream().mapToDouble(Employee::getSalary).average()/employees.size();
-//    }
 
 
     public Map<Integer, Employee> employeeHigherThemAverageSalary() {
         return employees
                 .values()
                 .stream()
-                .filter(s -> s.getSalary() > findAverageSalary())
+                .filter(s -> s.getSalary() > findAverageSalary().getAsDouble())
                 .collect(Collectors.toMap(Employee::getId, Function.identity()));
     }
+//    public List<Employee> getAllEmployeesWithAverageSalary(){
+//        var averageSalary = employees.values().stream().mapToDouble(Employee::getSalary)
+//                .average().orElseThrow();
+//        return employees.values()
+//                .stream()
+//                .filter(employee -> averageSalary < employee.getSalary())
+//                .collect(Collectors.toList());}
+
+//public OptionalInt getPersonWithMaxSalary() {
+//    return employees.values().stream().mapToInt(Employee::getSalary).max();
+//}
+
+
+//    public List<Employee> getPersonMinSalary() {
+//       var min = employees.values().stream().mapToInt(Employee::getSalary).min();
+//
+//        return employees.values().stream().filter(employees -> min.equals(employees.getSalary()))
+//                .collect(Collectors.toList());
+//    }
+
+    //    public double findAverageSalary() {
+//        return (double) getSalarySum() / employees.size();
+//    }
 
 
 }

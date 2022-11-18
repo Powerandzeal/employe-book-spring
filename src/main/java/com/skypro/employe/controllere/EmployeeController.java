@@ -35,13 +35,13 @@ public class EmployeeController {
     }
 
     @GetMapping("/employee/salary/min")
-    public OptionalInt getMin() {
-        return this.employeeService.getMinSalary();
+    public Employee getMin() {
+        return this.employeeService.getPersonWithMinSalary();
     }
 
     @GetMapping("/employee/salary/max")
-    public OptionalInt getMinAndMax() {
-        return this.employeeService.getMaxSalary();
+    public Employee getMinAndMax() {
+        return this.employeeService.getPersonWithMaxSalary();
     }
 
     @GetMapping("/employee/employeeHigherThemAverageSalary")
@@ -51,6 +51,6 @@ public class EmployeeController {
 
     @GetMapping("/employee/findAverageSalary")
     public double findAverageSalary() {
-        return this.employeeService.findAverageSalary();
+        return this.employeeService.findAverageSalary().getAsDouble();
     }
 }
