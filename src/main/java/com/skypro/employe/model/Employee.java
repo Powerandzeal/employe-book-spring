@@ -1,5 +1,11 @@
 package com.skypro.employe.model;
 
+import com.skypro.employe.controllere.EmployeeController;
+import org.springframework.http.HttpStatus;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 public class Employee {
     public final static int SALARY_SUM_IN_THE_MONTH = 0;
     public final static int MAX_NUM = 0;
@@ -18,8 +24,8 @@ public class Employee {
     private final double salary;
 
     public Employee(String firstName, String secondName, int department, double salary) {
-        this.firstName = firstName;
-        this.secondName = secondName;
+        this.firstName = StringUtils.capitalize(firstName);
+        this.secondName = StringUtils.capitalize(secondName);;
         this.department = department;
         this.salary = salary ;
         this.id = counter++;
@@ -56,4 +62,6 @@ public class Employee {
                 ", salary=" + salary +
                 '}';
     }
+
+
 }

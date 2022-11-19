@@ -3,10 +3,8 @@ package com.skypro.employe.controllere;
 import com.skypro.employe.model.Employee;
 import com.skypro.employe.record.EmployeeRequest;
 import com.skypro.employe.service.EmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -53,4 +51,10 @@ public class EmployeeController {
     public double findAverageSalary() {
         return this.employeeService.findAverageSalary().getAsDouble();
     }
+
+//    @GetMapping("employee/methodlevel")
+//    @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Resource was not found on the server")
+//    public String notFound() {
+//        return "";
+//    }
 }

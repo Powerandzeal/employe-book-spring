@@ -2,7 +2,11 @@ package com.skypro.employe.service;
 
 import com.skypro.employe.model.Employee;
 import com.skypro.employe.record.EmployeeRequest;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.*;
 import java.util.function.Function;
@@ -13,7 +17,6 @@ import java.util.stream.Collectors ;
 public class EmployeeService {
 
     private final Map<Integer,Employee> employees = new HashMap<>();
-    private static int average;
 
     public Collection<Employee> getAllEmployees() {
         return this.employees.values();
@@ -85,6 +88,7 @@ public class EmployeeService {
     //    public double findAverageSalary() {
 //        return (double) getSalarySum() / employees.size();
 //    }
+
 
 
 }
