@@ -1,5 +1,7 @@
 package com.skypro.employe.record;
 
+import org.springframework.util.StringUtils;
+
 public class EmployeeRequest {
     private String firstName;
     private String secondName;
@@ -12,7 +14,8 @@ public class EmployeeRequest {
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+
+            this.firstName = firstName;
     }
 
     public String getSecondName() {
@@ -20,7 +23,7 @@ public class EmployeeRequest {
     }
 
     public void setSecondName(String secondName) {
-        this.secondName = secondName;
+            this.secondName = secondName;
     }
 
     public int getDepartment() {
@@ -28,7 +31,7 @@ public class EmployeeRequest {
     }
 
     public void setDepartment(int department) {
-        this.department =  department ;
+        this.department = department;
     }
 
     public int getSalary() {

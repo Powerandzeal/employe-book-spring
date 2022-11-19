@@ -1,10 +1,13 @@
 package com.skypro.employe.model;
 
+import com.skypro.employe.controllere.EmployeeController;
+import org.springframework.http.HttpStatus;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
 public class Employee {
-    public final static int SALARY_SUM_IN_THE_MONTH = 0;
-    public final static int MAX_NUM = 0;
-    public final static int MIN_NUM = 1000000;
-    public static int AVERAGE_SALARY;
+
     private static int counter;
 
     private final int id;
@@ -34,7 +37,7 @@ public class Employee {
     }
 
     public String getSecondName() {
-        return secondName;
+        return secondName ;
     }
 
     public int getDepartment() {
@@ -56,4 +59,6 @@ public class Employee {
                 ", salary=" + salary +
                 '}';
     }
+
+
 }
