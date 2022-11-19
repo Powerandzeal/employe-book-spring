@@ -14,9 +14,8 @@ public class EmployeeRequest {
     }
 
     public void setFirstName(String firstName) {
-        if (StringUtils.hasLength(firstName) && !firstName.isBlank()) {
+
             this.firstName = firstName;
-        } else throw new RuntimeException("field is not created");
     }
 
     public String getSecondName() {
@@ -24,9 +23,7 @@ public class EmployeeRequest {
     }
 
     public void setSecondName(String secondName) {
-        if (StringUtils.hasLength(secondName)) {
             this.secondName = secondName;
-        } else throw new RuntimeException("field is not created");
     }
 
     public int getDepartment() {

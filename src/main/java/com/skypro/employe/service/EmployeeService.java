@@ -7,30 +7,42 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.*;
 import java.util.function.Function;
-import java.util.stream.Collectors ;
+import java.util.stream.Collectors;
 
 @Service
 
 public class EmployeeService {
 
-    private final Map<Integer,Employee> employees = new HashMap<>();
+    private final Map<Integer, Employee> employees = new HashMap<>();
 
     public Collection<Employee> getAllEmployees() {
         return this.employees.values();
     }
 
     public Employee addEmployee(EmployeeRequest employeeRequest) {
-        if (employeeRequest.getFirstName() == null || employeeRequest.getSecondName() == null) {
-            throw new IllegalArgumentException("Employee Name should be set");
-        }
+
+
+        if (StringUtils.hasLength(employeeRequest.getFirstName()) && !employeeRequest.getFirstName().isBlank()) {
+            employeeRequest.setFirstName(StringUtils.capitalize(employeeRequest.getFirstName()));
+
+        } else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+
+        if (StringUtils.hasLength(employeeRequest.getSecondName()) && !employeeRequest.getSecondName().isBlank()) {
+            employeeRequest.setSecondName(StringUtils.capitalize(employeeRequest.getSecondName()));
+        } else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+
+        //&& !employeeRequest.getFirstName().isBlank()
+//&& !employeeRequest.getSecondName().isBlank()
         Employee employee = new Employee(
                 employeeRequest.getFirstName(),
                 employeeRequest.getSecondName(),
                 employeeRequest.getDepartment(),
                 employeeRequest.getSalary());
+
         this.employees.put(employee.getId(), employee);
         return employee;
     }
@@ -45,7 +57,6 @@ public class EmployeeService {
     public Employee getPersonWithMinSalary() {
         return employees.values().stream().min(Comparator.comparing(Employee::getSalary)).orElse(null);
     }
-
 
 
     public Employee getPersonWithMaxSalary() {
@@ -65,6 +76,11 @@ public class EmployeeService {
                 .filter(s -> s.getSalary() > findAverageSalary().getAsDouble())
                 .collect(Collectors.toMap(Employee::getId, Function.identity()));
     }
+
+
+//    public void checkValue() {
+//        StringUtils.hasLength(employeeRequest.getFirstName());
+//    }
 //    public List<Employee> getAllEmployeesWithAverageSalary(){
 //        var averageSalary = employees.values().stream().mapToDouble(Employee::getSalary)
 //                .average().orElseThrow();
@@ -88,7 +104,6 @@ public class EmployeeService {
     //    public double findAverageSalary() {
 //        return (double) getSalarySum() / employees.size();
 //    }
-
 
 
 }

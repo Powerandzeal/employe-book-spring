@@ -7,7 +7,7 @@ Content-Type:application/json
 
 {
 
-  "firstName": " ",
+  "firstName": null,
   "secondName": "Ivanov",
   "department": 1,
   "salary": 25000
@@ -48,7 +48,7 @@ POST http://localhost:8080/employee
 Content-Type:application/json
 
 {
-  "firstName": "dmitry",
+  "firstName": null,
   "secondName": "Petrov",
   "department": 2,
   "salary": 12000

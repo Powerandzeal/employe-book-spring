@@ -26,7 +26,12 @@ public class EmployeeController {
     public Employee createEmployee(@RequestBody EmployeeRequest employeeRequest ) {
         return this.employeeService.addEmployee(employeeRequest);
     }
-
+/// test
+//    @PostMapping("/employee")
+//    public Employee createEmployee1(@RequestBody EmployeeRequest employeeRequest ) {
+//        return this.employeeService.addEmployee(employeeRequest);
+//    }
+/// test
     @GetMapping("/employee/salary/sum" )
     public int getSalarySum() {
         return this.employeeService.getSalarySum();
@@ -51,6 +56,14 @@ public class EmployeeController {
     public double findAverageSalary() {
         return this.employeeService.findAverageSalary().getAsDouble();
     }
+
+//    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+//    public class ServiceException extends Exception {
+//        public ServiceException(String message) {
+//            super(message);
+//        }
+//
+//    }
 
 //    @GetMapping("employee/methodlevel")
 //    @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Resource was not found on the server")
