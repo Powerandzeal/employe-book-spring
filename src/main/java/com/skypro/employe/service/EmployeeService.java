@@ -35,8 +35,7 @@ public class EmployeeService {
             employeeRequest.setSecondName(StringUtils.capitalize(employeeRequest.getSecondName()));
         } else throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 
-        //&& !employeeRequest.getFirstName().isBlank()
-//&& !employeeRequest.getSecondName().isBlank()
+
         Employee employee = new Employee(
                 employeeRequest.getFirstName(),
                 employeeRequest.getSecondName(),

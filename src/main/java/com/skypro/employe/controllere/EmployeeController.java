@@ -26,12 +26,7 @@ public class EmployeeController {
     public Employee createEmployee(@RequestBody EmployeeRequest employeeRequest ) {
         return this.employeeService.addEmployee(employeeRequest);
     }
-/// test
-//    @PostMapping("/employee")
-//    public Employee createEmployee1(@RequestBody EmployeeRequest employeeRequest ) {
-//        return this.employeeService.addEmployee(employeeRequest);
-//    }
-/// test
+
     @GetMapping("/employee/salary/sum" )
     public int getSalarySum() {
         return this.employeeService.getSalarySum();
