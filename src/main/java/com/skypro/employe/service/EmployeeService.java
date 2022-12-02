@@ -68,12 +68,19 @@ public class EmployeeService {
     }
 
 
-    public Map<Integer, Employee> employeeHigherThemAverageSalary() {
+//    public Map<Integer, Employee> employeeHigherThemAverageSalary() {
+//        return employees
+//                .values()
+//                .stream()
+//                .filter(s -> s.getSalary() > findAverageSalary().getAsDouble())
+//                .collect(Collectors.toMap(Employee::getId, Function.identity()));
+//    }
+    public List<Employee> employeeHigherThemAverageSalaryTry() {
         return employees
                 .values()
                 .stream()
                 .filter(s -> s.getSalary() > findAverageSalary().getAsDouble())
-                .collect(Collectors.toMap(Employee::getId, Function.identity()));
+                .collect(Collectors.toList());
     }
 
 

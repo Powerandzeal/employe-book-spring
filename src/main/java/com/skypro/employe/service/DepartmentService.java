@@ -24,6 +24,14 @@ public class DepartmentService {
     private final List<Employee> employeesInDepartment = new ArrayList<>();
 
 
+//    public List<Employee> getListEmployeeOnDepartment5(int department) {
+//        return employeeService
+//                .getAllEmployees()
+//                .stream()
+//                .filter(s -> s.getDepartment() == department)
+//                .collect(Collectors.groupingBy(Employee::getDepartment));
+//    }
+
     public Map<Integer, List<Employee>> getListEmployeeOnDepartment5(int department) {
         return employeeService
                 .getAllEmployees()

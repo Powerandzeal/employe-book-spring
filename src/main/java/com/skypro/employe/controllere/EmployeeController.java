@@ -43,9 +43,14 @@ public class EmployeeController {
     }
 
     @GetMapping("/employee/employeeHigherThemAverageSalary")
-    public Map<Integer, Employee> employeeHigherThemAverageSalary() {
-        return this.employeeService.employeeHigherThemAverageSalary();
+    public List <Employee> employeeHigherThemAverageSalary() {
+        return this.employeeService.employeeHigherThemAverageSalaryTry();
     }
+
+//    @GetMapping("/employee/employeeHigherThemAverageSalary")
+//    public Map<Integer, Employee> employeeHigherThemAverageSalary() {   Origina потом подставить обратно если не выйдет
+//        return this.employeeService.employeeHigherThemAverageSalary();
+//    }
 
     @GetMapping("/employee/findAverageSalary")
     public double findAverageSalary() {
