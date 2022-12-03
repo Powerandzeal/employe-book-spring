@@ -3,10 +3,8 @@ package com.skypro.employe.controllere;
 import com.skypro.employe.model.Employee;
 import com.skypro.employe.record.EmployeeRequest;
 import com.skypro.employe.service.EmployeeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
@@ -29,28 +27,47 @@ public class EmployeeController {
         return this.employeeService.addEmployee(employeeRequest);
     }
 
-    @GetMapping("/employee/salary/sum")
+    @GetMapping("/employee/salary/sum" )
     public int getSalarySum() {
         return this.employeeService.getSalarySum();
     }
 
     @GetMapping("/employee/salary/min")
-    public OptionalInt getMin() {
-        return this.employeeService.getMinSalary();
+    public Employee getMin() {
+        return this.employeeService.getPersonWithMinSalary();
     }
 
     @GetMapping("/employee/salary/max")
-    public OptionalInt getMinAndMax() {
-        return this.employeeService.getMaxSalary();
+    public Employee getMinAndMax() {
+        return this.employeeService.getPersonWithMaxSalary();
     }
 
     @GetMapping("/employee/employeeHigherThemAverageSalary")
-    public Map<Integer, Employee> employeeHigherThemAverageSalary() {
-        return this.employeeService.employeeHigherThemAverageSalary();
+    public List <Employee> employeeHigherThemAverageSalary() {
+        return this.employeeService.employeeHigherThemAverageSalaryTry();
     }
+
+//    @GetMapping("/employee/employeeHigherThemAverageSalary")
+//    public Map<Integer, Employee> employeeHigherThemAverageSalary() {   Origina потом подставить обратно если не выйдет
+//        return this.employeeService.employeeHigherThemAverageSalary();
+//    }
 
     @GetMapping("/employee/findAverageSalary")
     public double findAverageSalary() {
-        return this.employeeService.findAverageSalary();
+        return this.employeeService.findAverageSalary().getAsDouble();
     }
+
+//    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+//    public class ServiceException extends Exception {
+//        public ServiceException(String message) {
+//            super(message);
+//        }
+//
+//    }
+
+//    @GetMapping("employee/methodlevel")
+//    @ResponseStatus(code = HttpStatus.NOT_FOUND, reason = "Resource was not found on the server")
+//    public String notFound() {
+//        return "";
+//    }
 }

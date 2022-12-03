@@ -6,7 +6,8 @@ POST http://localhost:8080/employee
 Content-Type:application/json
 
 {
-  "firstName": "Ivan",
+
+  "firstName": "Grigory",
   "secondName": "Ivanov",
   "department": 1,
   "salary": 25000
@@ -17,7 +18,7 @@ POST http://localhost:8080/employee
 Content-Type:application/json
 
 {
-  "firstName": "Nikita",
+  "firstName": "Karen",
   "secondName": "Sergeevich",
   "department": 2,
   "salary": 10000
@@ -27,8 +28,8 @@ POST http://localhost:8080/employee
 Content-Type:application/json
 
 {
-  "firstName": "Vasiliy",
-  "secondName": "Pupkin",
+  "firstName": "oleg",
+  "secondName": "evgeniv",
   "department": 2,
   "salary": 15000
 }
@@ -37,8 +38,8 @@ POST http://localhost:8080/employee
 Content-Type:application/json
 
 {
-  "firstName": "Nikita",
-  "secondName": "Gulaev",
+  "firstName": "oleg",
+  "secondName": "Tinkoff",
   "department": 2,
   "salary": 19000
 }
@@ -47,9 +48,9 @@ POST http://localhost:8080/employee
 Content-Type:application/json
 
 {
-  "firstName": "Oleg",
+  "firstName": "Kakiy",
   "secondName": "Petrov",
-  "department": 2,
+  "department": 3,
   "salary": 12000
 }
 
@@ -63,7 +64,25 @@ GET http://localhost:8080/employee/salary/min
 GET http://localhost:8080/employee/salary/max
 
 ### Получить среднюю зарплату в компании
-###GET https://localhost:8080/employee/findAverageSalary
+GET http://localhost:8080/employee/findAverageSalary
 
 ### Получение всех сотрудников, зарплата которых больше средней зарплаты
 GET http://localhost:8080/employee/employeeHigherThemAverageSalary
+### Получить ошибку
+GET http://localhost:8080/employee/methodlevel
+//----------------------------------------------------------------------
+### Возвращает список сотрудников по департаменту
+GET http://localhost:8080/department/{id}/employees
+
+### Возвращает сумму зарплат по департаменту.
+GET http://localhost:8080/department/{id}/salary/sum
+
+### Возвращает максимальную зарплату по департаменту
+GET http://localhost:8080/department/{id}/salary/max
+
+### Возвращает минимальную зарплату по департаменту
+GET http://localhost:8080/department/{id}/salary/min
+
+### возвращает сотрудников, сгруппированых по отделам в виде Map<Integer,List<Employees>>,
+GET http://localhost:8080/department/employees
+

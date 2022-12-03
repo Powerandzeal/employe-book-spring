@@ -1,10 +1,15 @@
 package com.skypro.employe.model;
 
+import com.skypro.employe.controllere.EmployeeController;
+import org.springframework.http.HttpStatus;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.Objects;
+
 public class Employee {
-    public final static int SALARY_SUM_IN_THE_MONTH = 0;
-    public final static int MAX_NUM = 0;
-    public final static int MIN_NUM = 1000000;
-    public static int AVERAGE_SALARY;
+
     private static int counter;
 
     private final int id;
@@ -15,9 +20,9 @@ public class Employee {
 
     private final int department;
 
-    private final double salary;
+    private final int salary;
 
-    public Employee(String firstName, String secondName, int department, double salary) {
+    public Employee(String firstName, String secondName, int department, int salary) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.department = department;
@@ -34,7 +39,7 @@ public class Employee {
     }
 
     public String getSecondName() {
-        return secondName;
+        return secondName ;
     }
 
     public int getDepartment() {
@@ -43,6 +48,19 @@ public class Employee {
 
     public int getSalary() {
         return (int) salary;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return id == employee.id && department == employee.department && Double.compare(employee.salary, salary) == 0 && Objects.equals(firstName, employee.firstName) && Objects.equals(secondName, employee.secondName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, secondName, department, salary);
     }
 
     @Override
@@ -56,4 +74,6 @@ public class Employee {
                 ", salary=" + salary +
                 '}';
     }
+
+
 }
