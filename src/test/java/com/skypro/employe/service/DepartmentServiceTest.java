@@ -11,6 +11,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.List;
 import java.util.Map;
+import java.util.OptionalDouble;
+import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -39,33 +41,56 @@ class DepartmentServiceTest {
 
     @Test
     void getListEmployeeOnDepartment5() {
-        when(employeeService.getAllEmployees()).thenReturn(actualEmployee);
+
         final int department = 1;
-         List<Employee> actual = actualEmployee.stream().filter(employee -> employee.getDepartment() == department).
+         Map<Integer,List<Employee>> actual = actualEmployee.stream().filter(employee -> employee.getDepartment() == department).
                 collect(Collectors.toList());
-         Map<Integer, List<Employee>> expected = departmentService.getListEmployeeOnDepartment5(1);
+        when(employeeService.getAllEmployees()).thenReturn(actualEmployee);
+         Map<Integer,List<Employee>> expected = departmentService.getListEmployeeOnDepartment5(1);
         assertEquals(expected, actual);
 
     }
 
     @Test
     void getSumSalaryOnDepartment() {
+        when(employeeService.getAllEmployees()).thenReturn(actualEmployee);
+        final int department = 1;
+        final int actual = (int) actualEmployee.stream().filter(employee -> employee.getDepartment() == department).
+                mapToDouble(Employee::getSalary).sum();
+        final int expected = departmentService.getSumSalaryOnDepartment(department);
+        Assertions.assertEquals(expected, actual);
+
     }
 
     @Test
     void getMaxSalaryInDepartment() {
+        when(employeeService.getAllEmployees()).thenReturn(actualEmployee);
+        final int department = 1;
+         OptionalInt actual = OptionalInt.of(actualEmployee.stream().filter(employee -> employee.getDepartment() == department).
+                mapToInt(Employee::getSalary).max().orElseThrow(RuntimeException::new));
+         OptionalInt expected = departmentService.getMaxSalaryInDepartment(department);
+        Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
     void getMinSalaryOnDepartment() {
+            when(employeeService.getAllEmployees()).thenReturn(actualEmployee);
+            final int department = 1;
+            final OptionalInt actual = OptionalInt.of(actualEmployee.stream().filter(employee -> employee.getDepartment() == department).
+                    mapToInt(Employee::getSalary).min().orElseThrow(RuntimeException::new));
+            final OptionalInt expected = departmentService.getMinSalaryOnDepartment(department);
+            Assertions.assertEquals(expected, actual);
     }
 
-    @Test
-    void getAllEmployeeDepartment() {
-    }
 
     @Test
     void getGroupedEmployeeByDepartment() {
+
+        when(employeeService.getAllEmployees()).thenReturn(actualEmployee);
+        final Map<Integer, List<Employee>> actual = employeeService.getAllEmployees().stream().collect(Collectors.
+                groupingBy(Employee::getDepartment));
+        final Map<Integer, List<Employee>> expected = departmentService.getGroupedEmployeeByDepartment();
+        Assertions.assertEquals(expected, actual);
     }
 }

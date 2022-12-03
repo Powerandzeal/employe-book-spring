@@ -20,9 +20,9 @@ public class Employee {
 
     private final int department;
 
-    private final double salary;
+    private final int salary;
 
-    public Employee(String firstName, String secondName, int department, double salary) {
+    public Employee(String firstName, String secondName, int department, int salary) {
         this.firstName = firstName;
         this.secondName = secondName;
         this.department = department;

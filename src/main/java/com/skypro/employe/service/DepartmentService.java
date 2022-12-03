@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.OptionalInt;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 public class DepartmentService {
@@ -65,18 +66,14 @@ public class DepartmentService {
     }
 
 
-    public Map<Integer, List<Employee>> getAllEmployeeDepartment() {
-        return employeeService
-                .getAllEmployees()
-                .stream()
-                .collect(Collectors.groupingBy(Employee::getDepartment));
-    }
-
     public Map<Integer, List<Employee>> getGroupedEmployeeByDepartment() {
         return employeeService
                 .getAllEmployees()
                 .stream()
                 .collect(Collectors.groupingBy(Employee::getDepartment));
+    }
+    public Stream<Employee> getEmployeeDepartment(int department){
+        return employeeService.getAllEmployees().stream().filter(employee -> employee.getDepartment() == department);
     }
 
 

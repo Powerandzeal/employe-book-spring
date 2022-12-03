@@ -64,7 +64,7 @@ public class EmployeeService {
 
 
     public OptionalDouble findAverageSalary() {
-        return employees.values().stream().mapToDouble(Employee::getSalary).average();
+        return employees.values().stream().mapToInt(Employee::getSalary).average();
     }
 
 
